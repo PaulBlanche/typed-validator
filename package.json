@@ -3,16 +3,15 @@
   "version": "1.0.0",
   "description": "",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "tape -r ts-node/register src/**/*.test.ts"
   },
-  "author": "",
+  "author": "whiteshoulders",
   "license": "ISC",
   "devDependencies": {
     "@types/node": "^10.1.4",
-    "typescript": "^2.9.1"
-  },
-  "dependencies": {
+    "typescript": "^2.9.1",
     "@types/tape": "^4.2.32",
     "tape": "^4.9.0",
     "ts-node": "^6.0.5"
