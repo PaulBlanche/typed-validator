@@ -1,16 +1,16 @@
 import { getType, success, simpleError, isValidationError } from '../utils';
-import { Validator, Validate, ValidationError } from '../types';
+import { Validator, Validate, ValidationError, Unpack } from '../types';
 
 export type ObjectDefinition = {
     [key:string]: Validator<any>
 }
 
-type Unpack<DEFINITION extends ObjectDefinition> = {
-    [KEY in keyof DEFINITION]: DEFINITION[KEY] extends Validator<infer TYPE> ? TYPE : never;
+type MapUnpack<DEFINITION extends ObjectDefinition> = {
+    [KEY in keyof DEFINITION]: Unpack<DEFINITION[KEY]>;
 }
 
 export const object = 
-    <DEFINITION extends ObjectDefinition>(definition: DEFINITION): Validator<Unpack<DEFINITION>> => ({
+    <DEFINITION extends ObjectDefinition>(definition: DEFINITION): Validator<MapUnpack<DEFINITION>> => ({
         validate: validate(definition),
         type: type(definition),
     });

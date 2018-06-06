@@ -11,4 +11,4 @@ export { string } from './codec/string';
 export { union } from './codec/union';
 export { value } from './codec/value';
 
-export { Validator } from './types';
+export { Validator, Unpack } from './types';

@@ -4,6 +4,8 @@ export type Validator<TYPE> = {
     tag?: TYPE; // prevent compiler complaining about TYPE not being used
 }
 
+export type Unpack<VALIDATOR extends Validator<any>> = VALIDATOR extends Validator<infer TYPE> ? TYPE : never;
+
 export type Validate = (dirty: any) => Validation;
 
 export type Validation = ValidationSuccess | ValidationError;
